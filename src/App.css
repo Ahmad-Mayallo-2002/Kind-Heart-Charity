@@ -1,38 +1,966 @@
-.App {
-  text-align: center;
+:root {
+    --white-color:                  #ffffff;
+    --primary-color:                #5bc1ac;
+    --secondary-color:              #5a6f80;
+    --section-bg-color:             #f0f8ff;
+    --site-footer-bg-color:         #44525d;
+    --custom-btn-bg-color:          #597081;
+    --custom-btn-bg-hover-color:    #5bc1ac;
+    --dark-color:                   #000000;
+    --p-color:                      #717275;
+    --border-color:                 #e9eaeb;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Start Header */
+
+header {
+    background-color: var(--primary-color);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+header span {
+    color: var(--white-color);
+    &:first-of-type {
+        margin-right: 1rem;
+    }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+header a {
+    text-decoration: none;
+    color: var(--white-color);
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
-.App-link {
-  color: #61dafb;
+header i {
+    margin-right: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@media (max-width: 767px) {
+    header .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    header span:first-of-type {
+        margin-right: 0;
+    }
 }
+
+@media (max-width: 576px) {
+    header {
+        font-size: 14px;
+    }
+}
+
+/* End Header */
+
+/* Start Navbar */
+
+nav {
+    background-color: #f8f9fa;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 555;
+}
+
+nav .navbar-brand,
+nav .navbar-collapse {
+    transition: opacity 1s, transform 1s;
+}
+
+nav .navbar-brand:hover h1 {
+    color: var(--dark-color);
+}
+
+nav .navbar-brand article h1 {
+    font-size: 22px;
+    color: var(--primary-color);
+    transition: color .25s;
+}
+
+nav .navbar-brand article p {
+    font-size: 10px;
+    color: var(--secondary-color);
+}
+
+nav .navbar-nav .nav-link {
+    color: var(--secondary-color);
+    transition: color .25s;
+    &:hover {
+        color: var(--primary-color);
+    }
+}
+
+nav .navbar-nav button {
+    width: fit-content;
+    color: var(--custom-btn-bg-color);
+    border: 1px solid currentColor;
+    background-color: transparent;
+    padding: 10px 30px;
+    transition: background-color .25s, color .25s, border-color .25s;
+    &:hover {
+        background-color: var(--custom-btn-bg-hover-color);
+        color: var(--white-color);
+        border-color: var(--border-color);
+    }
+}
+
+/* End Navbar */
+
+/* Start Slider */
+
+main {
+    top: 0;
+    left: 0;
+    height: 680px;
+}
+
+main .slide:not(.active) {
+    left: -100%;
+}
+
+main .slide {
+    width: 100%;
+    height: 680px;
+    background-size: cover;
+}
+
+main .slide .content {
+    --width: 40%;
+    width: var(--width);
+    height: 80%;
+    background-color: #fff;
+    bottom: -2px;
+    right: 0;
+    clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
+}
+
+main .slide article {
+    bottom: 50px;
+    right: 35px;
+}
+
+main .slide article {
+    max-width: 250px;
+    text-align: center;
+}
+
+main .slide article h2 {
+    color: var(--secondary-color);
+    font-size: 50px;
+}
+
+main .slide article p {
+    color: var(--p-color);
+    text-align: center;
+}
+
+@keyframes next1 {
+    from {
+        left: 0%;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+
+@keyframes next2 {
+    from {
+        left: -100%;
+    }
+    to {
+        left: 0%;
+    }
+}
+
+@media (max-width: 768px) {
+    main .slide .content {
+        --width: 100%;
+    }
+}
+
+@media (max-width: 575px) {
+    main .slide article {
+        bottom: 0px;
+        right: 0px;
+    }
+}
+
+/* End Slider */
+
+/* Start Features */
+
+.features h3 {
+    font-size: 45px;
+    margin-bottom: 3rem;
+    color: var(--secondary-color);
+}
+
+.features .feature {
+    transition: box-shadow .25s;
+    border-radius: 1rem;
+    padding: 15px;
+    &:hover {
+        box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
+        img {
+            transform: scale(.75);
+        }
+    }
+}
+
+.features .feature p {
+    margin-top: 1rem;
+    color: var(--primary-color);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.features .feature img {
+    transition: transform .25s;
+}
+
+/* End Features */
+
+/* Start Story */
+
+.story {
+    background-color: var(--section-bg-color);
+}
+
+.story .col:first-of-type img {
+    border-radius: 20px;
+}
+
+.story .col:last-of-type {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 24px;
+}
+
+.story .col:last-of-type article {
+    border-radius: 20px;
+    background-color: var(--white-color);
+    padding: 40px;
+}
+
+.story .col:last-of-type article p {
+    color: var(--p-color);
+}
+
+.story .col:last-of-type article:first-of-type {
+    grid-column: 1 / -1;
+}
+
+.story .col:last-of-type article:first-of-type h3 {
+    color: var(--secondary-color);
+    font-size: 48px;
+}
+
+.story .col:last-of-type article:first-of-type h5 {
+    font-size: 20px;
+    color: var(--primary-color);
+}
+
+.story .col:last-of-type article:nth-of-type(2) h4 {
+    color: var(--primary-color)
+}
+
+.story .col:last-of-type article:nth-of-type(2) i {
+    background-color: var(--section-bg-color);
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+.story .col:last-of-type article:last-of-type h3 {
+    color: var(--primary-color);
+    font-size: 50px;
+}
+
+.sandy .col:first-of-type img {
+    width: 350px;
+    height: 400px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.sandy .col:last-of-type h3 {
+    color: var(--primary-color);
+    font-size: 30px;
+}
+
+.sandy .col:last-of-type small {
+    color: var(--p-color);
+}
+
+.sandy .col:last-of-type p {
+    margin: 2rem 0;
+    color: var(--p-color);
+}
+
+.sandy .col:last-of-type i {
+    width: 40px;
+    height: 40px;
+    background-color: var(--custom-btn-bg-color);
+    border-radius: 50%;
+    color: var(--white-color);
+    cursor: pointer;
+    transition: background-color .25s;
+    &:hover {
+        background-color: var(--custom-btn-bg-hover-color);
+    }
+}
+
+.impact {
+    background-color: var(--section-bg-color);
+}
+
+.impact::before,
+.impact::after {
+    position: absolute;
+    border-radius: 50%;
+    content: "";
+}
+
+.impact::before {
+    --dimenssions: 200px;
+    width: var(--dimenssions);
+    height: var(--dimenssions);
+    background-color: var(--primary-color);
+    top: calc(var(--dimenssions) / -2);
+    left: calc(var(--dimenssions) / -2);
+}
+
+.impact::after {
+    --dimenssions: 150px;
+    width: var(--dimenssions);
+    height: var(--dimenssions);
+    border: 20px solid var(--custom-btn-bg-color);
+    bottom: calc(var(--dimenssions) / 2 * -1 - 20px);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.impact h3 {
+    font-weight: bold;
+    font-size: 40px;
+    color: var(--secondary-color);
+}
+
+.impact a {
+    text-decoration: none;
+    margin-right: 30px;
+    color: var(--p-color);
+    transition: color .25s;
+    &:hover {
+        color: var(--primary-color);
+    }
+}
+
+.impact button {
+    padding: 12px 25px;
+    border: 3px solid currentColor;
+    background-color: transparent;
+    color: var(--custom-btn-bg-color);
+    font-weight: bold;
+    transition: color .25s, background-color .25s;
+    &:hover {
+        background-color: var(--primary-color);
+        color: var(--white-color);
+    }
+}
+
+@media (max-width: 575px) {
+    .sandy .col:last-of-type {
+        text-align: center;
+        .social {
+            justify-content: center;
+        }
+    }
+    .impact .col {
+        text-align: center;
+    }
+}
+
+/* End Story */
+
+/* Start Causes */
+
+.causes h3 {
+    color: var(--secondary-color);
+    font-size: 46px;
+}
+
+.causes .box {
+    border-radius: 20px 20px 0 0;
+    transition: box-shadow .25s;
+    &:hover {
+        box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
+    }
+}
+
+.causes .box img {
+    border-radius: 20px 20px 0 0;
+    max-width: 100%;
+}
+
+.causes .box article {
+    padding: 30px;
+}
+
+.causes .box article h4 {
+    color: var(--primary-color);
+    font-size: 24px;
+}
+
+.causes .box article p {
+    color: var(--p-color);
+}
+
+.causes .box progress {
+    width: 100%;
+    height: 5px;
+    appearance: none;
+}
+
+.causes .box progress::-webkit-progress-bar {
+    background-color: var(--border-color);
+    border-radius: 20px;
+}
+
+.causes .box progress::-webkit-progress-value {
+    background-color: var(--secondary-color);
+    border-radius: 20px;
+}
+
+.causes .box .rating {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.causes .col button {
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 0 0 20px 20px;
+    background-color: var(--custom-btn-bg-color);
+    color: var(--white-color);
+    transition: background-color .25s;
+    &:hover {
+        background-color: var(--custom-btn-bg-hover-color);
+    }
+}
+
+/* End Causes */
+
+/* Start Volunteer */
+
+.volunteer {
+    background-color: var(--secondary-color);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.volunteer::before {
+    --dimenssions: 250px;
+    position: absolute;
+    content: "";
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background-color: var(--custom-btn-bg-hover-color);
+    bottom: calc(var(--dimenssions) / -4);
+    right: calc(var(--dimenssions) / -4);
+    z-index: -1;
+}
+
+.volunteer h3 {
+    color: var(--white-color);
+    font-size: 46px;
+}
+
+.volunteer form {
+    background-color: var(--white-color);
+    padding: 50px;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 24px;
+}
+
+.volunteer form input,
+.volunteer form textarea {
+    border: none;
+    outline: none;
+    background-color: var(--section-bg-color);
+    padding: 13px;
+    border-radius: 10px;
+}
+
+.volunteer form label {
+    background-color: var(--section-bg-color);
+    border-radius: 10px;
+    padding: 13px;
+    color: var(--p-color);
+    position: relative;
+}
+
+.volunteer form label::before {
+    position: absolute;
+    content: "\f0ee";
+    font-family: "Font Awesome 6 Free";
+    font-weight: bold;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+}
+
+.volunteer form h4,
+.volunteer form textarea,
+.volunteer form input[type="submit"] {
+    grid-column: 1 / -1;
+}
+
+.volunteer form textarea {
+    resize: vertical;
+    height: 150px;
+}
+
+.volunteer form input[type="submit"] {
+    background-color: var(--custom-btn-bg-color);
+    color: var(--white-color);
+    transition: background-color .25s;
+    &:hover {
+        background-color: var(--custom-btn-bg-hover-color);
+    }
+}
+
+.volunteer .col:last-of-type {
+    color: var(--white-color);
+}
+
+.volunteer .col:last-of-type p {
+    max-width: 450px;
+}
+/* End Volunteer */
+
+/* Start News */
+
+.news h2 {
+    color: var(--secondary-color);
+    font-size: 46px;
+}
+
+.news .col img {
+    max-width: 100%;
+}
+
+.news .col:first-of-type img {
+    border-radius: 20px 20px 0px 0px;
+}
+
+.news .col:first-of-type figcaption {
+    background-color: var(--custom-btn-bg-color);
+    padding: 15px;
+    border-radius: 0px 0px 20px 20px;
+    color: var(--white-color);
+    font-size: 20px;
+}
+
+.news .col:first-of-type .data,
+.news .col:first-of-type p {
+    color: var(--p-color);
+}
+
+.news .col:last-of-type form:first-of-type {
+    position: relative;
+}
+
+.news .col:last-of-type img {
+    border-radius: 10px;
+}
+
+.news .col:last-of-type form:first-of-type input {
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 15px;
+    background-color: var(--section-bg-color);
+}
+
+.news .col:last-of-type form:first-of-type::before {
+    position: absolute;
+    content: "\f002";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    color: var(--p-color);
+}
+
+.news .col:last-of-type h5 {
+    margin: 1rem 0;
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.news .col:last-of-type figure {
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+}
+
+.news .col:last-of-type figure figcaption,
+.news .col:last-of-type p {
+    color: var(--p-color);
+}
+
+.news .col:last-of-type span {
+    background-color: var(--custom-btn-bg-color);
+    color: var(--white-color);
+    padding: 5px 10px;
+    border-radius: 1rem;
+    margin-left: 1rem;
+}
+
+.news .col:last-of-type .tags {
+    display: flex;
+    gap: 10px 30px;
+    flex-wrap: wrap;
+}
+
+.tags p {
+    padding: 5px 20px;
+    border: 1px solid var(--dark-color);
+    border-radius: 2rem;
+}
+
+.news .col:last-of-type form:last-of-type {
+    background-color: var(--section-bg-color);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.news .col:last-of-type form:last-of-type h6 {
+    color: var(--primary-color);
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.news .col:last-of-type form:last-of-type input {
+    border: none;
+    outline: none;
+}
+
+.news .col:last-of-type form:last-of-type input[type="email"] {
+    padding: 15px;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.news .col:last-of-type form:last-of-type input[type="submit"] {
+    margin-top: 1rem;
+    width: 100%;
+    background-color: var(--custom-btn-bg-color);
+    padding: 15px;
+    color: var(--white-color);
+    transition: background-color .25s;
+    &:hover {
+        background-color: var(--custom-btn-bg-hover-color);
+    }
+}
+/* End News */
+
+/* Start Customers */
+
+.customers {
+    background-color: var(--section-bg-color);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.customers::before,
+.customers::after {
+    position: absolute;
+    content: "";
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.customers::before {
+    --dimenssions: 250px;
+    width: var(--dimenssions);
+    height: var(--dimenssions);
+    background-color: var(--primary-color);
+    top: calc(var(--dimenssions) / -4);
+    left: calc(var(--dimenssions) / -4);
+}
+
+.customers::after {
+    --dimenssions: 250px;
+    width: var(--dimenssions);
+    height: var(--dimenssions);
+    background-color: var(--secondary-color);
+    bottom: calc(var(--dimenssions) / -4);
+    right: calc(var(--dimenssions) / -4);
+}
+
+.customers h2 {
+    font-size: 46px;
+    color: var(--secondary-color);
+}
+
+.customers img {
+    object-fit: cover;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    transition: opacity .25s;
+}
+
+.customers article {
+    height: 200px;
+}
+
+.customer {
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: opacity .25s;
+    &:not(.active) {
+        opacity: 0;
+    }
+}
+
+.customer.active {
+    opacity: 1;
+}
+
+.customer q {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.customers img:not(.active) {
+    opacity: .5;
+}
+
+.customers small {
+    width: fit-content;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 10px;
+    position: relative;
+}
+
+.customers small::before {
+    position: absolute;
+    content: "";
+    border: 11px solid transparent;
+    border-bottom-color: var(--primary-color);
+    top: -19px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@media (max-width: 575px) {
+    .customers q {
+        font-size: 16px;
+    }
+}
+
+/* End Customers */
+
+/* Start Contact */
+
+.contact .col:first-of-type img {
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+}
+
+.contact .col:first-of-type h3,
+.contact .col:first-of-type h4 {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 46px;
+    margin-bottom: 2rem;
+}
+
+.contact .col:first-of-type figure {
+    padding: 40px 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    column-gap: 30px;
+    margin-bottom: 2rem;
+}
+
+.contact .col:first-of-type figure figcaption {
+    color: var(--p-color);
+    font-size: 22px;
+}
+
+.contact .col:first-of-type figure figcaption p {
+    margin-bottom: 0;
+}
+
+.contact .col:first-of-type h4 {
+    font-size: 30px;
+}
+
+.contact .col:first-of-type p {
+    color: var(--p-color);
+    i {
+        margin-right: 1rem;
+    }
+}
+
+.contact .col:first-of-type a {
+    display: block;
+    width: fit-content;
+    padding: 13px 25px;
+    color: var(--white-color);
+    background-color: var(--custom-btn-bg-color);
+    transition: background-color .25s;
+    &:hover {
+        background-color: var(--custom-btn-bg-hover-color);
+    }
+}
+
+.contact .col:last-of-type .box {
+    padding: 40px;
+    background-color: var(--section-bg-color);
+    border-radius: 2rem;
+}
+
+.contact .col:last-of-type .box h3 {
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: 46px;
+}
+
+.contact .col:last-of-type .box p {
+    color: var(--p-color);
+}
+
+.contact .col:last-of-type .box p a {
+    color: var(--p-color);
+    transition: color .25s;
+    text-decoration: none;
+    &:hover {
+        color: var(--primary-color);
+    }
+}
+
+.contact .col:last-of-type .box form {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 24px;
+}
+
+.contact .col:last-of-type .box form input,
+.contact .col:last-of-type .box form textarea {
+    border: none;
+    outline: none;
+    padding: 15px;
+}
+
+.contact .col:last-of-type .box form textarea,
+.contact .col:last-of-type .box form input[type="submit"],
+.contact .col:last-of-type .box form input[type="email"] {
+    grid-column: 1 / -1;
+}
+
+.contact .col:last-of-type .box form textarea {
+    resize: vertical;
+    height: 150px;
+}
+
+.contact .col:last-of-type .box form input[type="submit"] {
+    background-color: var(--custom-btn-bg-color);
+    color: var(--white-color);
+    transition: background-color .25s;
+    &:hover {
+        background-color: var(--custom-btn-bg-hover-color);
+    }
+}
+
+/* End Contact */
+
+/* Start Information */
+
+.information {
+    background-color: var(--site-footer-bg-color);
+    color: var(--white-color);
+}
+
+.information a {
+    display: block;
+    color: var(--white-color);
+    text-decoration: none;
+    transition: color .25s;
+    &:hover {
+        color: var(--primary-color);
+    }
+}
+
+.information a:not(.information .direction) {
+    margin: 1rem 0;
+}
+
+.information .col:nth-of-type(3) h3 {
+    visibility: hidden;
+}
+
+.information i {
+    margin-top: 1rem;
+    margin-right: 1rem;
+}
+
+.information .direction {
+    width: fit-content;
+    background-color: var(--secondary-color);
+    padding: 13px 25px;
+    margin-top: 1rem;
+    transition: background-color .25s;
+    &:hover {
+        color: var(--white-color);
+        background-color: var(--primary-color);
+    }
+}
+
+/* End Information */
+
+/* Start Footer */
+
+footer {
+    padding: 20px;
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+}
+
+footer a {
+    text-decoration: none;
+    color: var(--white-color);
+    transition: color .25s;
+    &:hover {
+        color: var(--primary-color);
+    }
+}
+
+/* End Footer */
